@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +18,19 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+// Route::get('/hello', function () {
+//     return response ("<h1>Hello Laravel </h1>view('welcome') <br> Monday", 404)
+//     ->header('Content-Type', 'text/plain');
+// });
+
+// Route::get('/post/{id}', function ($id){
+//  return response ('POST '. $id);
+// });
+
+// Route::get('/search', function(Request $request){
+//     dd($request);
+// });
 
 Route::get('/dashboard', function () {
     return view('dashboard');
