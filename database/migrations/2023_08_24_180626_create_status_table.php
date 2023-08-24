@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('status', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('listing_id')->constrained()->onDelete('cascade');
+            $table->string('applied')->default('no');
+            $table->timestamp('applied_on')->nullable();
             $table->timestamps();
         });
     }
