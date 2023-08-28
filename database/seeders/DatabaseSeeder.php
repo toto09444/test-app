@@ -24,19 +24,20 @@ class DatabaseSeeder extends Seeder
             'email' => 'john@gmail.com'
         ]);
 
-        Listing::factory(6)->create([
+        Listing::factory(1)->create([
             'user_id' => $user->id
         ]);
 
-        // Listing::create([
-        //     'title' => 'Laravel Senior Developer', 
-        //     'tags' => 'laravel, javascript',
-        //     'company' => 'Acme Corp',
-        //     'location' => 'Boston, MA',
-        //     'email' => 'email1@email.com',
-        //     'website' => 'https://www.acme.com',
-        //     'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam minima et illo reprehenderit quas possimus voluptas repudiandae cum expedita, eveniet aliquid, quam illum quaerat consequatur! Expedita ab consectetur tenetur delensiti?'
-        // ]);
+        Listing::create([
+            'title' => 'Laravel Senior Developer',
+            'user_id' => $user->id, 
+            'tags' => 'laravel, javascript',
+            'company' => 'Acme Corp',
+            'location' => 'Boston, MA',
+            'email' => 'email1@email.com',
+            'website' => 'https://www.acme.com',
+            'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam minima et illo reprehenderit quas possimus voluptas repudiandae cum expedita, eveniet aliquid, quam illum quaerat consequatur! Expedita ab consectetur tenetur delensiti?'
+        ]);
 
         // Listing::create([
         //     'title' => 'Full-Stack Engineer',
