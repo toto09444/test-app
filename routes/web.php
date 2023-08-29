@@ -3,6 +3,9 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ListingController;
+use App\Http\Controllers\UserController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -16,6 +19,16 @@ use App\Http\Controllers\ProfileController;
 */
 
 Route::get('/', [ListingController::class, 'index']);
+
+
+// Show Register/Create Form
+Route::get('/register', [UserController::class, 'create'])->middleware('guest');
+
+// Show Login Form
+Route::get('/login', [UserController::class, 'login'])->name('login')->middleware('guest');
+
+// Log In User
+Route::post('/auth/authenticate', [UserController::class, 'authenticate']);
 
 
 // require __DIR__.'/auth.php';

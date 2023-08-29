@@ -16,7 +16,8 @@
         theme: {
           extend: {
             colors: {
-              laravel: '#ef3b2d',
+            //   laravel: '#38B6FF #B3B3CC #113F67',
+              laravel: '#666699',
             },
           },
         },
@@ -25,19 +26,19 @@
   <title>MicroGigs | Find software Jobs & Projects</title>
 </head>
 
-<body class="mb-48">
-  <nav class="flex justify-between items-center mb-4">
-    <a href="/"><img class="w-24" src="{{asset('images/logo.png')}}" alt="" class="logo" /></a>
-    <ul class="flex space-x-6 mr-6 text-lg">
+<body class="mb-48 bg-gray-300">
+  <nav class="fixed top-0 left-0 flex justify-between items-center mb-4 z-10 w-full bg-gray-300 border-b-4 border-[#113F67]">
+    <a href="/"><img class="w-14 p-2" src="{{asset('images/logoM.png')}}" alt="" class="logo" /></a>
+    <ul class="flex space-x-6 mr-6 text-md">
       @auth
       <li>
         <span class="font-bold uppercase">
           Welcome {{auth()->user()->name}}
         </span>
       </li>
-      <li>
+      {{-- <li>
         <a href="/listings/manage" class="hover:text-laravel"><i class="fa-solid fa-gear"></i> Manage Listings</a>
-      </li>
+      </li> --}}
       <li>
         <form class="inline" method="POST" action="/logout">
           @csrf
@@ -61,10 +62,10 @@
     {{$slot}}
   </main>
   <footer
-    class="fixed bottom-0 left-0 w-full flex items-center justify-start font-bold bg-laravel text-white h-24 mt-24 opacity-90 md:justify-center">
-    <p class="ml-2">Copyright &copy; 2023, All Rights reserved</p>
+    class="fixed bottom-0 left-0 w-full flex items-center justify-start font-bold bg-laravel text-white h-auto mt-24 opacity-90 md:justify-center">
+    <p class="py-2">Copyright &copy; 2023, All Rights reserved</p>
 
-    <a href="/listings/create" class="absolute top-1/3 right-10 bg-black text-white py-2 px-5">Post Job</a>
+    {{-- <a href="/listings/create" class="absolute top-1/3 right-10 bg-black text-white py-2 px-5">Post Job</a> --}}
   </footer>
 
   <x-flash-message />
