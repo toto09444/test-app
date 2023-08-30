@@ -58,8 +58,15 @@ class UserController extends Controller
 
         if(auth()->attempt($formFields)) {
             $request->session()->regenerate();
+            $user = auth()->user();
 
-            return redirect('/')->with('message', 'You are now logged in!');
+            if ($user->role === 'admin') {
+                return redirect()->route('admin.listings.index')->with('message', 'You are now logged in as an admin.');
+            } else {
+                return redirect('/')->with('message', 'You are now logged in!');
+            }
+
+            // return redirect('/')->with('message', 'You are now logged in!');
         }
 
         return back()->withErrors(['email' => 'Invalid Credentials'])->onlyInput('email');
