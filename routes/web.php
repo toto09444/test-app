@@ -21,7 +21,12 @@ use App\Http\Controllers\ProfileController;
 
 
 Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
-    Route::get('/', [ListingController::class, 'index'])->name('admin.listings.index');
+    Route::get('/',[AdminController::class, 'index'])->name('admin.listings.index');
+    // Manage Listings
+    Route::get('/listings/manage', [ListingController::class, 'manage']);
+    // Show Edit Form
+Route::get('/listings/{listing}/edit', [ListingController::class, 'edit']);
+
     // Add more admin-specific routes here ->name('admin.dashboard')
 });
 

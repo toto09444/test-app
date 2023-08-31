@@ -28,7 +28,7 @@
 
 <body class="mb-16 bg-gray-300">
   <nav class=" top-0 left-0 flex justify-between items-center mb-4 z-10 w-full bg-gray-300 border-b-4 border-[#113F67]">
-    <a href="/"><img class="w-14 p-2" src="{{asset('images/logoM.png')}}" alt="" class="logo" /></a>
+    <a href="/admin"><img class="w-14 p-2" src="{{asset('images/logoM.png')}}" alt="" class="logo" /></a>
     <ul class="flex space-x-6 mr-6 text-md">
       @auth
       <li>
@@ -37,7 +37,7 @@
         </span>
       </li>
       <li>
-        <a href="/listings/manage" class="hover:text-laravel"><i class="fa-solid fa-gear"></i> Manage Listings</a>
+        <a href="/admin/listings/manage" class="hover:text-laravel"><i class="fa-solid fa-gear"></i> Manage Listings</a>
       </li>
       <li>
         <form class="inline" method="POST" action="/logout">
@@ -49,7 +49,7 @@
       </li>
       @else
       <li>
-        <a href="/register" class="hover:text-laravel"><i class="fa-solid fa-user-plus"></i> Register</a>
+        <a href="/admin/register" class="hover:text-laravel"><i class="fa-solid fa-user-plus"></i> Register</a>
       </li>
       <li>
         <a href="/login" class="hover:text-laravel"><i class="fa-solid fa-arrow-right-to-bracket"></i> Login</a>

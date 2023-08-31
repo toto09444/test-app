@@ -20,4 +20,16 @@ class ListingController extends Controller
             'listing' => $listing
         ]);
     }
+
+     // Show Edit Form
+     public function edit(Listing $listing) {
+        return view('admin.listings.edit', ['listing' => $listing]);
+    }
+
+    // Manage Listings
+    public function manage() {
+        // return view('admin.listings.manage', ['listings' => auth()->user()->listings()->get()]);
+        return view('admin.listings.manage', ['listings' => Listing::latest()->paginate(10)]);
+
+    }
 }

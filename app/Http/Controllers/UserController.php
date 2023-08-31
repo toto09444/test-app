@@ -59,8 +59,10 @@ class UserController extends Controller
         if(auth()->attempt($formFields)) {
             $request->session()->regenerate();
             $user = auth()->user();
-
+             
             if ($user->role === 'admin') {
+                // dd($user->role);
+
                 return redirect()->route('admin.listings.index')->with('message', 'You are now logged in as an admin.');
             } else {
                 return redirect('/')->with('message', 'You are now logged in!');

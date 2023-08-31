@@ -1,11 +1,11 @@
-<x-layout>
+<x-admin-layout>
   <x-card class="p-10 max-w-lg mx-auto mt-24">
     <header class="text-center">
       <h2 class="text-2xl font-bold uppercase mb-1">Edit Gig</h2>
       <p class="mb-4">Edit: {{$listing->title}}</p>
     </header>
 
-    <form method="POST" action="/listings/{{$listing->id}}" enctype="multipart/form-data">
+    <form method="POST" action="/admin/listings/{{$listing->id}}" enctype="multipart/form-data">
       @csrf
       @method('PUT')
       <div class="mb-6">
@@ -108,4 +108,4 @@
       </div>
     </form>
   </x-card>
-</x-layout>
+</x-admin-layout>
