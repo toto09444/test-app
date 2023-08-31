@@ -1,5 +1,6 @@
 <x-admin-layout>
     @if (!Auth::check())
+      @include('partials._hello')
       @include('partials._hero')
     @endif
   

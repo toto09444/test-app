@@ -101,7 +101,7 @@
 
       <div class="mb-6">
         <button class="bg-laravel text-white rounded py-2 px-4 hover:bg-black">
-          Update Gig
+          Update job
         </button>
 
         <a href="/" class="text-black ml-4"> Back </a>

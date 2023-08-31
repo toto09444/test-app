@@ -37,7 +37,21 @@
         </span>
       </li>
       <li>
+        <a href="/admin/auth/manage" class=" text-black hover:text-laravel"><i class="fa fa-address-book" aria-hidden="true"></i>
+          Manage Users</a>
+
+      </li>
+      <li>
+        <a href="/admin/listings/create" class=" text-black hover:text-laravel"><i class="fa fa-laptop" aria-hidden="true"></i>
+        </i>
+          Post Job</a>
+
+      </li>
+      <li>
         <a href="/admin/listings/manage" class="hover:text-laravel"><i class="fa-solid fa-gear"></i> Manage Listings</a>
+      </li>
+      <li>
+        <a href="/admin/register" class="hover:text-laravel"><i class="fa-solid fa-user-plus"></i> Register</a>
       </li>
       <li>
         <form class="inline" method="POST" action="/logout">
@@ -65,7 +79,6 @@
     class="fixed bottom-0 left-0 w-full  items-center font-bold bg-laravel text-white h-auto mt-24 opacity-90 md:justify-center">
     <p class="py-2 text-center">Copyright &copy; 2023, All Rights reserved ADMIN</p>
 
-    <a href="/listings/create" class="absolute top-1/3 right-10 bg-black text-white py-2 px-5">Post Job</a>
   </footer>
 
   <x-flash-message />

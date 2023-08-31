@@ -22,12 +22,29 @@ use App\Http\Controllers\ProfileController;
 
 Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
     Route::get('/',[AdminController::class, 'index'])->name('admin.listings.index');
-    // Manage Listings
-    Route::get('/listings/manage', [ListingController::class, 'manage']);
-    // Show Edit Form
-Route::get('/listings/{listing}/edit', [ListingController::class, 'edit']);
+    // Show Create Form
+     Route::get('/listings/create', [ListingController::class, 'create']);
+    // Store Listing Data
+     Route::post('/listings', [ListingController::class, 'store']);
 
-    // Add more admin-specific routes here ->name('admin.dashboard')
+
+    // Manage Listings
+    Route::get('/listings/manage', [ListingController::class, 'manage'])->name('admin.listings.manage');
+    // Show Edit Form
+     Route::get('/listings/{listing}/edit', [ListingController::class, 'edit']);
+    // Update Listing
+     Route::put('/listings/{listing}', [ListingController::class, 'update']);
+
+    // Delete Listing
+     Route::delete('/listings/{listing}', [ListingController::class, 'destroy']);
+
+
+    // MANAGE USERS
+    Route::get('/auth/manage', [UserController::class, 'manage'])->name('admin.auth.manage');
+    // Show Edit Form
+    Route::get('/auth/{user}/edit', [UserController::class, 'edit']);
+    // Update user
+    Route::put('/auth/{listing}', [UserController::class, 'update']);
 });
 
 

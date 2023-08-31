@@ -73,4 +73,31 @@ class UserController extends Controller
 
         return back()->withErrors(['email' => 'Invalid Credentials'])->onlyInput('email');
     }
+
+
+    // Manage users
+    public function manage() {
+        return view('admin.auth.manage', ['users' => User::latest()->paginate(10)]);
+    }
+
+     // Show Edit Form
+     public function edit(User $user) {
+        return view('admin.auth.edit', ['user' => $user]);
+    }
+
+    // Update Listing Data
+    public function update(Request $request, User $user) {              
+        $formFields = $request->validate([
+            'name' => 'required',
+            'email' => ['required'],
+            'role' => 'required',
+            'password' => 'required'
+        ]);
+
+        
+        $user->update($formFields);
+        $users = auth()->user()->users()->get(); // Fetch updated list of listings
+        return redirect()->route('admin.auth.manage', compact('users'))->with('message', 'User updated successfully!');
+
+    }
 }
