@@ -13,4 +13,9 @@ class AdminController extends Controller
         $listings = Listing::paginate();
         return view('admin.listings.index', compact('listings'));
     }
+
+    // Show Register/Create Form
+    public function create() {
+        return view('admin.auth.register');
+    }
 }

@@ -22,6 +22,8 @@ use App\Http\Controllers\ProfileController;
 
 Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
     Route::get('/',[AdminController::class, 'index'])->name('admin.listings.index');
+    // Single Listing
+    //  Route::get('/listings/{listing}', [ListingController::class, 'show']);
     // Show Create Form
      Route::get('/listings/create', [ListingController::class, 'create']);
     // Store Listing Data
@@ -41,10 +43,15 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
 
     // MANAGE USERS
     Route::get('/auth/manage', [UserController::class, 'manage'])->name('admin.auth.manage');
+    // Single User
+     Route::get('/auth/{user}', [UserController::class, 'show']);
+
     // Show Edit Form
     Route::get('/auth/{user}/edit', [UserController::class, 'edit']);
     // Update user
-    Route::put('/auth/{listing}', [UserController::class, 'update']);
+    Route::put('/auth/{user}', [UserController::class, 'update']);
+    // Show Register user form
+    Route::get('/auth/register', [AdminController::class, 'create'])->name('admin.auth.register');
 });
 
 

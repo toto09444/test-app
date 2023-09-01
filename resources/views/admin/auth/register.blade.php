@@ -1,11 +1,11 @@
-<x-layout>
+<x-admin-layout>
     <x-card class="p-10 max-w-lg mx-auto mt-24">
       <header class="text-center">
         <h2 class="text-2xl font-bold uppercase mb-1">Register</h2>
-        <p class="mb-4">Create an account to post gigs</p>
+        <p class="mb-4">Create an account</p>
       </header>
   
-      <form method="POST" action="/auth">
+      <form method="POST" action="{{ route('admin.auth.register') }}">
         @csrf
         <div class="mb-6">
           <label for="name" class="inline-block text-lg mb-2"> Name </label>
@@ -63,4 +63,4 @@
         </div>
       </form>
     </x-card>
-  </x-layout>
+  </x-admin-layout>

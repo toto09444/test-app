@@ -85,19 +85,23 @@ class UserController extends Controller
         return view('admin.auth.edit', ['user' => $user]);
     }
 
-    // Update Listing Data
-    public function update(Request $request, User $user) {              
-        $formFields = $request->validate([
-            'name' => 'required',
-            'email' => ['required'],
-            'role' => 'required',
-            'password' => 'required'
-        ]);
+    // Update User Data
+public function update(Request $request, User $user) {              
+    $formFields = $request->validate([
+        'name' => 'required',
+        'role' => 'required',
+    ]);
 
-        
-        $user->update($formFields);
-        $users = auth()->user()->users()->get(); // Fetch updated list of listings
-        return redirect()->route('admin.auth.manage', compact('users'))->with('message', 'User updated successfully!');
+    $user->update($formFields);
+    return redirect()->route('admin.auth.manage')->with('message', 'User updated successfully!');
+}
 
-    }
+//Show single user
+public function show(User $user) {
+    // dd($user);
+    return view('admin.auth.show', [
+        'user' => $user
+    ]);
+}
+
 }

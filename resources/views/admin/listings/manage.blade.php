@@ -16,6 +16,7 @@
           </td>
           <td class="px-4 py-8 border-t border-b border-gray-300 text-lg">
             <a href="/admin/listings/{{$listing->id}}"> {{$listing->title}} </a>
+
           </td>
           <td class="px-4 py-8 border-t border-b border-gray-300 text-lg">
             <a href="/admin/listings/{{$listing->id}}/edit" class="text-blue-400 px-6 py-2 rounded-xl"><i

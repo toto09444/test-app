@@ -51,7 +51,7 @@
         <a href="/admin/listings/manage" class="hover:text-laravel"><i class="fa-solid fa-gear"></i> Manage Listings</a>
       </li>
       <li>
-        <a href="/admin/register" class="hover:text-laravel"><i class="fa-solid fa-user-plus"></i> Register</a>
+        <a href="/admin/auth/register" class="hover:text-laravel"><i class="fa-solid fa-user-plus"></i> Register</a>
       </li>
       <li>
         <form class="inline" method="POST" action="/logout">
