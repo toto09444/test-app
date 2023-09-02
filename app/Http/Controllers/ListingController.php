@@ -31,7 +31,8 @@ class ListingController extends Controller
 
       // Store Listing Data
       public function store(Request $request) {
-        // dd(auth()->check(), auth()->user(), session()->all());
+                    $userId = auth()->id();
+
         $formFields = $request->validate([
             'title' => 'required',
             'company' => ['required', Rule::unique('listings', 'company')],
@@ -39,23 +40,24 @@ class ListingController extends Controller
             'website' => 'required',
             'email' => ['required', 'email'],
             'tags' => 'required',
-            'description' => 'required'
+            'description' => 'required',
+            'user_id' => $userId,
         ]);
 
         if($request->hasFile('logo')) {
             $formFields['logo'] = $request->file('logo')->store('logos', 'public');
         }
+        
 
-        if (auth()->check()) {
-            $formFields['user_id'] = auth()->id();
-        }
-
+        // if (auth()->check()) {
+            // $formFields['user_id'] = auth()->id();
+        // }
+        dd($formFields);
     
         Listing::create($formFields);
 
         // return redirect()->route('admin.listings.index')->with('message', 'Job created successfully!');  
         return redirect('/')->with('message', 'Listing created successfully!');
-
       }
 
      // Show Edit Form
@@ -80,9 +82,10 @@ class ListingController extends Controller
             'description' => 'required'
         ]);
 
-        if($request->hasFile('logo')) {
-            $formFields['logo'] = $request->file('logo')->store('logos', 'public');
+        if ($request->hasFile('logo')) {
+            $formFields['logo'] = $request->file('logo')->storeAs('images', 'custom_filename.jpg', 'public');
         }
+        
 
         $listing->update($formFields);
         $listings = auth()->user()->listings()->get(); // Fetch updated list of listings
