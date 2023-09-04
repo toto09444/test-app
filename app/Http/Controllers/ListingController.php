@@ -41,7 +41,6 @@ class ListingController extends Controller
             'email' => ['required', 'email'],
             'tags' => 'required',
             'description' => 'required',
-            'user_id' => $userId,
         ]);
 
         if($request->hasFile('logo')) {
@@ -52,9 +51,9 @@ class ListingController extends Controller
         // if (auth()->check()) {
             // $formFields['user_id'] = auth()->id();
         // }
-        dd($formFields);
+        // dd(array_merge($formFields, ['user_id'=>$userId]));
     
-        Listing::create($formFields);
+        Listing::create(array_merge($formFields, ['user_id'=>$userId]));
 
         // return redirect()->route('admin.listings.index')->with('message', 'Job created successfully!');  
         return redirect('/')->with('message', 'Listing created successfully!');

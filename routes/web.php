@@ -40,7 +40,15 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
     // Delete Listing
      Route::delete('/listings/{listing}', [ListingController::class, 'destroy']);
 
+Route::prefix('/auth')->group(function() {
+  // Show Register user form
+  Route::get('/register', [AdminController::class, 'create'])->name('admin.auth.register');
+  // Create New User
+Route::post('/register', [AdminController::class, 'store']);
+// Delete User
+Route::delete('{user}', [AdminController::class, 'destroy'])->name('admin.auth.destroy');
 
+});
     // MANAGE USERS
     Route::get('/auth/manage', [UserController::class, 'manage'])->name('admin.auth.manage');
     // Single User
@@ -50,8 +58,10 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
     Route::get('/auth/{user}/edit', [UserController::class, 'edit']);
     // Update user
     Route::put('/auth/{user}', [UserController::class, 'update']);
-    // Show Register user form
-    Route::get('/auth/register', [AdminController::class, 'create'])->name('admin.auth.register');
+  
+    Route::get('test',function(){
+        return "Test";
+    });
 });
 
 
@@ -76,6 +86,9 @@ Route::post('/auth/authenticate', [UserController::class, 'authenticate']);
 
 // Log User Out
 Route::post('/logout', [UserController::class, 'logout'])->middleware('auth');
+
+Route::post('/listings/toggle/{listingId}', [StatusController::class, 'toggleStatus'])->name('listings.toggleStatus');
+
 
 
 // require __DIR__.'/auth.php';

@@ -26,7 +26,7 @@
               Edit</a>
           </td>
           <td class="px-4 py-8 border-t border-b border-gray-300 text-lg">
-            <form method="POST" action="/admin/auth/{{$user->id}}">
+            <form method="POST" action="{{ route('admin.auth.destroy', ['user' => $user->id]) }}">
               @csrf
               @method('DELETE')
               <button class="text-red-500"><i class="fa-solid fa-trash"></i> Delete</button>

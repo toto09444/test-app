@@ -15,7 +15,19 @@
           <p class="text-red-500 text-xs mt-1">{{$message}}</p>
           @enderror
         </div>
-  
+        
+        <div class="mb-6">
+          <label for="role" class="inline-block text-lg mb-2">Role</label>
+          <select class="border border-gray-200 rounded p-2 w-full" name="role">
+              <option value="user" {{ old('role') === 'user' ? 'selected' : '' }}>User</option>
+              <option value="admin" {{ old('role') === 'admin' ? 'selected' : '' }}>Admin</option>
+          </select>
+      
+          @error('role')
+          <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+          @enderror
+      </div>
+      
         <div class="mb-6">
           <label for="email" class="inline-block text-lg mb-2">Email</label>
           <input type="email" class="border border-gray-200 rounded p-2 w-full" name="email" value="{{old('email')}}" />
