@@ -22,23 +22,24 @@ use App\Http\Controllers\ProfileController;
 
 Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
     Route::get('/',[AdminController::class, 'index'])->name('admin.listings.index');
-    // Single Listing
-    //  Route::get('/listings/{listing}', [ListingController::class, 'show']);
+   
+     Route::prefix('/listings')->group(function() {
+         // Single Listing
+     Route::get('/{listing}', [ListingController::class, 'show']);
     // Show Create Form
-     Route::get('/listings/create', [ListingController::class, 'create']);
+     Route::get('/create', [ListingController::class, 'create']);
     // Store Listing Data
-     Route::post('/listings', [ListingController::class, 'store']);
-
-
-    // Manage Listings
-    Route::get('/listings/manage', [ListingController::class, 'manage'])->name('admin.listings.manage');
+     Route::post('/create', [ListingController::class, 'store']);
+     // Manage Listings
+    Route::get('/manage', [ListingController::class, 'manage'])->name('admin.listings.manage');
     // Show Edit Form
-     Route::get('/listings/{listing}/edit', [ListingController::class, 'edit']);
+     Route::get('/{listing}/edit', [ListingController::class, 'edit']);
     // Update Listing
-     Route::put('/listings/{listing}', [ListingController::class, 'update']);
-
+     Route::put('/{listing}', [ListingController::class, 'update']);
     // Delete Listing
      Route::delete('/listings/{listing}', [ListingController::class, 'destroy']);
+     });
+
 
 Route::prefix('/auth')->group(function() {
   // Show Register user form
@@ -47,17 +48,18 @@ Route::prefix('/auth')->group(function() {
 Route::post('/register', [AdminController::class, 'store']);
 // Delete User
 Route::delete('{user}', [AdminController::class, 'destroy'])->name('admin.auth.destroy');
+// MANAGE USERS
+Route::get('/manage', [UserController::class, 'manage'])->name('admin.auth.manage');
+// Single User
+ Route::get('/{user}', [UserController::class, 'show']);
+
+// Show Edit Form
+Route::get('/{user}/edit', [UserController::class, 'edit']);
+// Update user
+Route::put('/{user}', [UserController::class, 'update']);
 
 });
-    // MANAGE USERS
-    Route::get('/auth/manage', [UserController::class, 'manage'])->name('admin.auth.manage');
-    // Single User
-     Route::get('/auth/{user}', [UserController::class, 'show']);
-
-    // Show Edit Form
-    Route::get('/auth/{user}/edit', [UserController::class, 'edit']);
-    // Update user
-    Route::put('/auth/{user}', [UserController::class, 'update']);
+    
   
     Route::get('test',function(){
         return "Test";

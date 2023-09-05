@@ -48,7 +48,7 @@
 
       </li>
       <li>
-        <a href="/admin/listings/manage" class="hover:text-laravel"><i class="fa-solid fa-gear"></i> Manage Listings</a>
+        <a href="{{ route('admin.listings.manage') }}" class="hover:text-laravel"><i class="fa-solid fa-gear"></i> Manage Listings</a>
       </li>
       <li>
         <a href="/admin/auth/register" class="hover:text-laravel"><i class="fa-solid fa-user-plus"></i> Register</a>

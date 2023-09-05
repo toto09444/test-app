@@ -46,17 +46,10 @@ class ListingController extends Controller
         if($request->hasFile('logo')) {
             $formFields['logo'] = $request->file('logo')->store('logos', 'public');
         }
-        
-
-        // if (auth()->check()) {
-            // $formFields['user_id'] = auth()->id();
-        // }
-        // dd(array_merge($formFields, ['user_id'=>$userId]));
-    
+            
         Listing::create(array_merge($formFields, ['user_id'=>$userId]));
+        return redirect('/admin/listings/index')->with('message', 'Listing deleted successfully');
 
-        // return redirect()->route('admin.listings.index')->with('message', 'Job created successfully!');  
-        return redirect('/')->with('message', 'Listing created successfully!');
       }
 
      // Show Edit Form
@@ -99,6 +92,7 @@ class ListingController extends Controller
             Storage::disk('public')->delete($listing->logo);
         }
         $listing->delete();
-        return redirect('/')->with('message', 'Listing deleted successfully');
+        return redirect('/admin/listings/index')->with('message', 'Listing deleted successfully');
+
     }
 }

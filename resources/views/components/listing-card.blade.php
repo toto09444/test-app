@@ -12,6 +12,7 @@
       <x-listing-tags :tagsCsv="$listing->tags" />
       <div class="text-lg mt-4">
         <i class="fa-solid fa-location-dot"></i> {{$listing->location}}
+        <p>You apllied for this job on:</p>
         <x-toggle :listingId="$listing->id" :initialStatus="$listing->status" />
 
       </div>

@@ -35,13 +35,11 @@ class AdminController extends Controller
 
         // Create User
         $user = User::create($formFields);
-       return redirect('/admin/auth/manage')->with('message', 'User deleted successfully');
+       return redirect('/admin/auth/manage')->with('message', 'User created successfully');
     }
 
       // Delete Listing
-      public function destroy(User $user) {
-        // Make sure logged in user is owner      
-        
+      public function destroy(User $user) {        
         $user->delete();
         return redirect('/admin/auth/manage')->with('message', 'User deleted successfully');
     }

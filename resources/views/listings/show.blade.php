@@ -17,6 +17,15 @@
           <div class="text-lg my-4">
             <i class="fa-solid fa-location-dot"></i> {{$listing->location}}
           </div>
+          <form method="POST" action="/update-data" class="mb-6">
+            @csrf
+            <label for="toggle">if applied, check & submit</label>
+            <input type="checkbox" id="toggle" name="toggle">
+            <button type="submit" class="bg-laravel text-white rounded py-1 px-4 hover:bg-black">
+              Submit</button>
+        </form>
+
+        
           <div class="border border-gray-200 w-full mb-6"></div>
           <div>
             <h3 class="text-3xl font-bold mb-4">Job Description</h3>
