@@ -17,10 +17,10 @@
           <div class="text-lg my-4">
             <i class="fa-solid fa-location-dot"></i> {{$listing->location}}
           </div>
-          <form method="POST" action="/update-data" class="mb-6">
+          <form method="POST" action="{{ route('status.store', ['listing_id' => $listing->id]) }}" class="mb-6">
             @csrf
             <label for="toggle">if applied, check & submit</label>
-            <input type="checkbox" id="toggle" name="toggle">
+            <input type="checkbox" id="toggle" name="applied">
             <button type="submit" class="bg-laravel text-white rounded py-1 px-4 hover:bg-black">
               Submit</button>
         </form>
@@ -46,4 +46,32 @@
         </div>
       </x-card>
     </div>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+          const form = document.getElementById('status-form');
+  
+          form.addEventListener('submit', function (e) {
+              e.preventDefault(); // Prevent the default form submission
+  
+              // Serialize the form data
+              const formData = new FormData(form);
+  
+              // Send an AJAX request to your server
+              fetch("{{ route('status.store', ['listing_id' => $listing->id]) }}", {
+                  method: 'POST',
+                  body: formData
+              })
+              .then(response => response.json())
+              .then(data => {
+                  // Handle the response, e.g., show a success message
+                  alert(data.message);
+              })
+              .catch(error => {
+                  console.error('Error:', error);
+              });
+          });
+      });
+  </script>
+  
   </x-layout>

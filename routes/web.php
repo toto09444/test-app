@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\StatusController;
 use App\Http\Controllers\ListingController;
 use App\Http\Controllers\ProfileController;
 
@@ -22,43 +23,49 @@ use App\Http\Controllers\ProfileController;
 
 Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
     Route::get('/',[AdminController::class, 'index'])->name('admin.listings.index');
-   
-     Route::prefix('/listings')->group(function() {
-         // Single Listing
-     Route::get('/{listing}', [ListingController::class, 'show']);
-    // Show Create Form
-     Route::get('/create', [ListingController::class, 'create']);
-    // Store Listing Data
-     Route::post('/create', [ListingController::class, 'store']);
-     // Manage Listings
-    Route::get('/manage', [ListingController::class, 'manage'])->name('admin.listings.manage');
-    // Show Edit Form
-     Route::get('/{listing}/edit', [ListingController::class, 'edit']);
-    // Update Listing
-     Route::put('/{listing}', [ListingController::class, 'update']);
-    // Delete Listing
-     Route::delete('/listings/{listing}', [ListingController::class, 'destroy']);
+    // Route::get('listings/manage', [ListingController::class, 'manage'])->name('admin.listings.manage');
+
+
+
+//    GROUP LISTING ROUTE
+         Route::prefix('listings')->group(function() {
+            // Show Create Form
+            Route::get('/create', [ListingController::class, 'create']);
+            // Manage Listings
+             Route::get('/manage', [ListingController::class, 'manage'])->name('admin.listings.manage');
+            // Single Listing
+             Route::get('/{listing}', [ListingController::class, 'show']);
+            
+            // Store Listing Data
+             Route::post('/create', [ListingController::class, 'store']);
+            
+            // Show Edit Form
+             Route::get('/{listing}/edit', [ListingController::class, 'edit']);
+            // Update Listing
+             Route::put('/{listing}', [ListingController::class, 'update']);
+            // Delete Listing
+            Route::delete('/listings/{listing}', [ListingController::class, 'destroy']);
      });
 
+//    GROUP AUTH ROUTE
 
-Route::prefix('/auth')->group(function() {
-  // Show Register user form
-  Route::get('/register', [AdminController::class, 'create'])->name('admin.auth.register');
-  // Create New User
-Route::post('/register', [AdminController::class, 'store']);
-// Delete User
-Route::delete('{user}', [AdminController::class, 'destroy'])->name('admin.auth.destroy');
-// MANAGE USERS
-Route::get('/manage', [UserController::class, 'manage'])->name('admin.auth.manage');
-// Single User
- Route::get('/{user}', [UserController::class, 'show']);
+         Route::prefix('/auth')->group(function() {
+            // Show Register user form
+            Route::get('/register', [AdminController::class, 'create'])->name('admin.auth.register');
+            // Create New User
+            Route::post('/register', [AdminController::class, 'store']);
+            // Delete User
+            Route::delete('{user}', [AdminController::class, 'destroy'])->name('admin.auth.destroy');
+            // MANAGE USERS
+            Route::get('/manage', [UserController::class, 'manage'])->name('admin.auth.manage');
+            // Single User
+            Route::get('/{user}', [UserController::class, 'show']);
+            // Show Edit Form
+            Route::get('/{user}/edit', [UserController::class, 'edit']);
+            // Update user
+            Route::put('/{user}', [UserController::class, 'update']);
 
-// Show Edit Form
-Route::get('/{user}/edit', [UserController::class, 'edit']);
-// Update user
-Route::put('/{user}', [UserController::class, 'update']);
-
-});
+         });
     
   
     Route::get('test',function(){
@@ -89,7 +96,9 @@ Route::post('/auth/authenticate', [UserController::class, 'authenticate']);
 // Log User Out
 Route::post('/logout', [UserController::class, 'logout'])->middleware('auth');
 
-Route::post('/listings/toggle/{listingId}', [StatusController::class, 'toggleStatus'])->name('listings.toggleStatus');
+// Create New Status
+Route::post('/listings/show', [StatusController::class, 'store'])->name('status.store');
+
 
 
 
