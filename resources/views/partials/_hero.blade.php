@@ -13,8 +13,9 @@
       @auth
       @else
       <a href="/register"
-        class="inline-block border-2 border-white text-white py-2 px-4 rounded-xl uppercase mt-2 hover:text-black hover:border-black">Sign
-        Up to apply</a>
+  class="inline-block border-2 border-white text-white py-2 px-4 rounded-xl uppercase mt-2 hover:text-black hover:border-black"
+  style="position: relative; z-index: 1;">Sign Up to apply</a>
+
       @endauth
     </div>
   </div>

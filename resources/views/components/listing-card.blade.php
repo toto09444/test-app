@@ -1,6 +1,8 @@
 @props(['listing'])
 
+
 <x-card>
+ 
   <div class="flex">
     <img class="hidden w-48 mr-6 md:block"
       src="{{$listing->logo ? asset('storage/' . $listing->logo) : asset('/images/no-image.png')}}" alt="" />
@@ -20,10 +22,24 @@
       <x-listing-tags :tagsCsv="$listing->tags" />
       <div class="text-lg mt-4">
         <i class="fa-solid fa-location-dot"></i> {{$listing->location}}
-        <p>You apllied for this job on:</p>
+        @auth
+        @php
+        $userStatus = $listing->status
+            ->where('user_id', auth()->id())
+            ->where('listing_id', $listing->id)
+            ->last();
+        @endphp
+    
+        @if ($userStatus)
+             <p class="text-sm text-[#666699] font-bold">You applied for this role on: {{ formatLocalizedWithSuffix(optional($userStatus->applied_on)->toDateString()) }}</p>
+
+          @else
+          <p class="text-sm text-[#666699] font-bold">You are yet to apply fo this role</p>
+        @endif
+        @endauth
+
 
       </div>
     </div>
   </div>
 </x-card>
-

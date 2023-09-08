@@ -1,5 +1,5 @@
 <x-layout>
-    <a href="/" class="inline-block text-black ml-4 mb-4"><i class="fa-solid fa-arrow-left"></i> Back
+    <a href="{{ url()->previous() }}" class="inline-block text-black ml-4 mb-4"><i class="fa-solid fa-arrow-left"></i> Back
     </a>
     <div class="mx-4">
       <x-card class="p-10">
@@ -20,7 +20,7 @@
           <form method="POST" action="{{ route('status.store', ['listing_id' => $listing->id]) }}" class="mb-6">
             @csrf
             <label for="toggle">if applied, check & submit</label>
-            <input type="checkbox" id="toggle" name="applied">
+            <input type="checkbox" id="toggle" name="applied" value="yes">
             <button type="submit" class="bg-laravel text-white rounded py-1 px-4 hover:bg-black">
               Submit</button>
         </form>

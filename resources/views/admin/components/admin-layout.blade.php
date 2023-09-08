@@ -12,7 +12,6 @@
     integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
-  {{-- <script src="//unpkg.com/alpinejs" defer></script> --}}
   <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.js"></script>
 
   <script src="https://cdn.tailwindcss.com"></script>
@@ -28,7 +27,6 @@
         theme: {
           extend: {
             colors: {
-            //   laravel: '#38B6FF #B3B3CC #113F67',
               laravel: '#666699',
             },
           },
@@ -41,7 +39,7 @@
 <body class="mb-16 bg-gray-300">
   <nav class=" bg-gray-300 border-b-4 border-[#113F67]">
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-      <a href="/" class="flex items-center">
+      <a href="/admin" class="flex items-center">
         <img src="{{asset('images/logoM.png')}}"class="h-8 mr-3" alt="Flowbite Logo" />
         <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Micro<span class="text-[#38B6FF]">Gigs</span></span>
     </a>

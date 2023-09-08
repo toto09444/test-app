@@ -1,6 +1,6 @@
 <x-admin-layout>
-    <a href="{{ url()->previous() }}" class="inline-block text-black ml-4 mb-4"><i class="fa-solid fa-arrow-left"></i> Back
-    </a>
+    {{-- <a href="{{ url()->previous() }}" class="inline-block text-black ml-4 mb-4"><i class="fa-solid fa-arrow-left"></i> Back
+    </a> --}}
     <div class="mx-4">
       <x-card class="p-10">
         <div class="flex flex-col items-center justify-center text-center">

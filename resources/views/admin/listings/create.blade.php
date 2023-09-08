@@ -5,7 +5,7 @@
       <p class="mb-4">Post a gig to find a developer</p>
     </header>
 
-    <form method="POST" action="/admin/listings" enctype="multipart/form-data">
+    <form method="POST" action="{{ route('admin.listings.store') }}" enctype="multipart/form-data">
       @csrf
       <div class="mb-6">
         <label for="company" class="inline-block text-lg mb-2">Company Name</label>

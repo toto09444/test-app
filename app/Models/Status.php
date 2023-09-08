@@ -9,8 +9,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Status extends Model
 {
+    
     use HasFactory;
-    protected $fillable = ['user_id', 'listing_id', 'applied',];
+    protected $table = "status";
+    protected $fillable = ['user_id', 'listing_id', 'applied','applied_on'];
 
 
     /**

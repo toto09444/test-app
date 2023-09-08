@@ -1,38 +1,20 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\Status;
-use App\Models\Listing;
 use Illuminate\Http\Request;
 
 class StatusController extends Controller
 {
    // Create New Status
    public function store(Request $request) {
-    
-
+    // dd($request->all());
     $formFields = $request->validate([
-        'applied' => 'boolean', // Validate the checkbox value
+        'applied' => 'required',
+        'listing_id' => 'required', // Validate the checkbox value
     ]);
 
-    $listingId = $request->input('listing_id');
     $userId = auth()->id();
-
-    dd( $formFields, $userId, $listingId);
-
-    // Create status
-    // Status::create(array_merge($formFields, ['user_id'=>$userId]));
-
-    Status::create([
-        'applied' => $formFields['applied'],
-        'listing_id' => $listingId,
-        'user_id' => $userId,
-    ]);
-
-
-
-    // Login
-
-    return redirect('/')->with('message', 'User created and logged in');
+    Status::create(array_merge($formFields, ['user_id'=>$userId, 'applied_on' => now()]));
+    return redirect('/')->with('message', 'User applied for this role');
 }}

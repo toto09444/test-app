@@ -12,7 +12,7 @@ class AdminController extends Controller
     public function index()
     {
         // Your admin dashboard logic here
-        $listings = Listing::paginate();
+        $listings = Listing::latest()->paginate();
         return view('admin.listings.index', compact('listings'));
     }
 

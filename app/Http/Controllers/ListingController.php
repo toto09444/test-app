@@ -19,9 +19,19 @@ class ListingController extends Controller
 
     //Show single listing
     public function show(Listing $listing) {
-        return view('listings.show', [
-            'listing' => $listing
-        ]);
+
+        $user = auth()->user();
+             
+        if ($user->role === 'admin') {
+
+            return view('admin.listings.show', [
+                'listing' => $listing
+            ]);
+        } else {
+            return view('listings.show', [
+                'listing' => $listing
+            ]);        }
+       
     }
 
     // Show Create Form
@@ -31,12 +41,11 @@ class ListingController extends Controller
 
       // Store Listing Data
       public function store(Request $request) {
-        dd($request);
                     $userId = auth()->id();
 
         $formFields = $request->validate([
             'title' => 'required',
-            'company' => ['required', Rule::unique('listings', 'company')],
+            'company' => 'required',
             'location' => 'required',
             'website' => 'required',
             'email' => ['required', 'email'],
@@ -46,11 +55,10 @@ class ListingController extends Controller
 
         if($request->hasFile('logo')) {
             $formFields['logo'] = $request->file('logo')->store('logos', 'public');
-        }
-            
+        }       
         Listing::create(array_merge($formFields, ['user_id'=>$userId]));
-        return redirect('/admin/listings/index')->with('message', 'Listing deleted successfully');
-
+        $listings = Listing::paginate();
+        return view('admin.listings.index', compact('listings'));
       }
 
      // Show Edit Form
@@ -78,22 +86,17 @@ class ListingController extends Controller
         if ($request->hasFile('logo')) {
             $formFields['logo'] = $request->file('logo')->storeAs('images', 'custom_filename.jpg', 'public');
         }
-        
-
-        $listing->update($formFields);
+                $listing->update($formFields);
         $listings = auth()->user()->listings()->get(); // Fetch updated list of listings
         return redirect()->route('admin.listings.manage', compact('listings'))->with('message', 'Listing updated successfully!');
-
     }
 
     // Delete Listing
     public function destroy(Listing $listing) {
-        
         if($listing->logo && Storage::disk('public')->exists($listing->logo)) {
             Storage::disk('public')->delete($listing->logo);
         }
         $listing->delete();
-        return redirect('/admin/listings/index')->with('message', 'Listing deleted successfully');
-
+        return view('admin.listings.manage', ['listings' => Listing::latest()->paginate(10)]);
     }
 }
