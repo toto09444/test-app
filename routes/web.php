@@ -20,6 +20,8 @@ use App\Http\Controllers\ProfileController;
 |
 */
 
+// Create New Status
+Route::post('/listings/show', [StatusController::class, 'store'])->name('status.store');
 
 Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
     Route::get('/',[AdminController::class, 'index'])->name('admin.listings.index');
@@ -96,8 +98,7 @@ Route::post('/auth/authenticate', [UserController::class, 'authenticate']);
 // Log User Out
 Route::post('/logout', [UserController::class, 'logout'])->middleware('auth');
 
-// Create New Status
-Route::post('/listings/show', [StatusController::class, 'store'])->name('status.store');
+
 
 
 
