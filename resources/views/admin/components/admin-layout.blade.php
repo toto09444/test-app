@@ -29,6 +29,8 @@
 <body class="mb-16 bg-gray-300">
   <nav class=" top-0 left-0 flex justify-between items-center mb-4 z-10 w-full bg-gray-300 border-b-4 border-[#113F67]">
     <a href="/admin"><img class="w-14 p-2" src="{{asset('images/logoM.png')}}" alt="" class="logo" /></a>
+
+    
     <ul class="flex space-x-6 mr-6 text-md">
       @auth
       <li>

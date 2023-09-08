@@ -31,6 +31,7 @@ class ListingController extends Controller
 
       // Store Listing Data
       public function store(Request $request) {
+        dd($request);
                     $userId = auth()->id();
 
         $formFields = $request->validate([

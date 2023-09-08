@@ -6,7 +6,15 @@
       src="{{$listing->logo ? asset('storage/' . $listing->logo) : asset('/images/no-image.png')}}" alt="" />
     <div>
       <h3 class="text-2xl">
-        <a href="/listings/{{$listing->id}}">{{$listing->title}}</a>
+        @auth
+        <h3 class="text-2xl">
+          <a href="/listings/{{$listing->id}}">{{$listing->title}}</a>
+        </h3>
+        @else
+        <h3 class="text-2xl">
+          <a href="{{ route('login') }}">{{$listing->title}}</a>
+        </h3>
+        @endauth
       </h3>
       <div class="text-xl font-bold mb-4">{{$listing->company}}</div>
       <x-listing-tags :tagsCsv="$listing->tags" />
@@ -18,3 +26,4 @@
     </div>
   </div>
 </x-card>
+

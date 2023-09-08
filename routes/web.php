@@ -24,21 +24,21 @@ use App\Http\Controllers\ProfileController;
 Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
     Route::get('/',[AdminController::class, 'index'])->name('admin.listings.index');
     // Route::get('listings/manage', [ListingController::class, 'manage'])->name('admin.listings.manage');
-
+// Store Listing Data
+Route::post('listings/create', [ListingController::class, 'store'])->name('admin.listings.store');
 
 
 //    GROUP LISTING ROUTE
          Route::prefix('listings')->group(function() {
+             // Store Listing Data
+            //  Route::post('/create', [ListingController::class, 'store'])->name('admin.listings.store');
             // Show Create Form
             Route::get('/create', [ListingController::class, 'create']);
             // Manage Listings
              Route::get('/manage', [ListingController::class, 'manage'])->name('admin.listings.manage');
+            
             // Single Listing
-             Route::get('/{listing}', [ListingController::class, 'show']);
-            
-            // Store Listing Data
-             Route::post('/create', [ListingController::class, 'store']);
-            
+             Route::get('/{listing}', [ListingController::class, 'show']);      
             // Show Edit Form
              Route::get('/{listing}/edit', [ListingController::class, 'edit']);
             // Update Listing
