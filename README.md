@@ -28,9 +28,9 @@
 
 <!-- PROJECT DESCRIPTION -->
 
-# 📖 [MicroGig] <a name="about-project"></a>
+# 📖 [MicroGigs] <a name="about-project"></a>
 
-**[MicroGig]** is an application designed to display available jobs and inform users if they have applied for that job.
+**[MicroGigs]** is an application designed to display available jobs and inform users if they have applied for that job.
 
 ## 🛠 Built With <a name="built-with"></a>
 
@@ -40,6 +40,8 @@
     <li><a href="https://laravel.com/docs/10.x/installation">Laravel</a></li>
         <li><a href="laravel.com/docs/10.x/installation">TailwindCSS</a></li>
             <li><a href="https://php.net">php</a></li>
+                        <li><a href="https://w3school.com">HTML</a></li>
+
 
 
   </ul>
@@ -149,8 +151,7 @@ Feel free to check the [issues page](https://github.com/donmark2k/microgigs/issu
 
 ## ⭐️ Show your support <a name="support"></a>
 
-If you like this project please leave a STAR to the [Github repo](https://github.com/donmark2k/
-microgigs/)
+If you like this project please leave a STAR to the [Github repo](https://github.com/donmark2k/microgigs/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
