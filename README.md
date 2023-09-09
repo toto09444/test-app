@@ -106,9 +106,11 @@ To run the project, execute the following command:
   php artisan serve
 ```
 ### Run tests
+To run the test, execute the following command:
 
--  Type `Rspec`: To run test `
-
+```sh
+php artisan test --filter Unit
+```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

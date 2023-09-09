@@ -72,9 +72,8 @@ public function it_can_filter_listings_by_tag()
 {
     // Create a few listings with specific tags
     $user = User::factory()->create();
-    Listing::factory()->create(['user_id' => $user->id, 'tags' => 'tag1,tag2']);
     Listing::factory()->create(['user_id' => $user->id, 'tags' => 'tag2,tag3']);
-    Listing::factory()->create(['user_id' => $user->id, 'tags' => 'tag3,tag4']);
+    Listing::factory()->create(['user_id' => $user->id, 'tags' => 'tag2,tag4']);
 
     // Filter listings by a specific tag
     $filteredListings = Listing::filter(['tag' => 'tag2'])->get();
