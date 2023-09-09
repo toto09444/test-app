@@ -55,8 +55,9 @@
 - **[Users can know if they have applied before]**
 
 
-- Here is a [Live Demo Link](https://donmark2k.github.io/GD_summit/)
-- Here is a [presentation video link](https://www.loom.com/share/e87f06686ebc44b4a3965d6800c5121f)
+<!-- - Here is a [Live Demo Link](https://donmark2k.github.io/GD_summit/) -->
+- Live Demo: It will be uploaded when available.
+- Here is a [presentation video link](https://youtu.be/bzxSvRlZC6I)
 
 ## Project Screenshots
 
