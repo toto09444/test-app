@@ -1,6 +1,4 @@
 <x-admin-layout>
-    {{-- <a href="{{ url()->previous() }}" class="inline-block text-black ml-4 mb-4"><i class="fa-solid fa-arrow-left"></i> Back
-    </a> --}}
     <div class="mx-4">
       <x-card class="p-10">
         <div class="flex flex-col items-center justify-center text-center">
@@ -29,9 +27,10 @@
                 Contact Employer</a>
 
   
-              <a href="{{$listing->website}}" target="_blank"
+              <a href="https://{{$listing->website}}" target="_blank" rel="noopener noreferrer"
                 class="block bg-black text-white py-2 rounded-xl hover:opacity-80"><i class="fa-solid fa-globe"></i>
                 Visit Website</a>
+                
             </div>
           </div>
         </div>
