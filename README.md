@@ -60,7 +60,7 @@
 
 ## Project Screenshots
 
-![Home page](./public/images/microgigsH.png)
+![Home page](./public/images/screenshot.png)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
