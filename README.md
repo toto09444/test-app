@@ -55,8 +55,7 @@
 - **[Users can know if they have applied before]**
 
 
-<!-- - Here is a [Live Demo Link](https://donmark2k.github.io/GD_summit/) -->
-- Live Demo: It will be uploaded when available.
+- Here is a [Live Demo Link](https://microgig.up.railway.app/)
 - Here is a [presentation video link](https://youtu.be/bzxSvRlZC6I)
 
 ## Project Screenshots
