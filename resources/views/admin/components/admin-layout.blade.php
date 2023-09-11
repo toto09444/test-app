@@ -101,7 +101,7 @@
   </main>
   <footer
     class="fixed bottom-0 left-0 w-full  items-center font-bold bg-laravel text-white h-auto mt-24 opacity-90 md:justify-center">
-    <p class="py-2 text-center">Copyright &copy; 2023, All Rights reserved ADMIN</p>
+    <p class="py-2 text-center">Copyright &copy; 2023, All Rights reserved</p>
 
   </footer>
 
