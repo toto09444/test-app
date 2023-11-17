@@ -2,26 +2,27 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
     /**
      * Register any application services.
+     *
+     * @return void
      */
-    public function register(): void
+    public function register()
     {
         //
     }
 
     /**
      * Bootstrap any application services.
+     *
+     * @return void
      */
-    public function boot(): void
+    public function boot()
     {
-        Blade::component('admin.components.admin-layout', 'admin-layout');  
-        Blade::component('admin.components.admin-listing-card', 'admin-listing-card');  
-
-      }
+        //
+    }
 }

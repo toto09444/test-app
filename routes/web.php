@@ -1,104 +1,57 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\StatusController;
-use App\Http\Controllers\ListingController;
-
+use App\Http\Controllers\QB;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
 |
 | Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
 |
 */
 
-// Create New Status
-Route::post('/listings/show', [StatusController::class, 'store'])->name('status.store');
+Route::get('/', function () {
+    return view('index');
+});
+//// ! pour l'insertion
+Route::post('/addligneF',[QB::class,'AddLigneFour'])->name('addligne.Fournisseur');
+Route::post('/addligneA',[QB::class,'AddLigneArticle'])->name('addligne.Articles');
 
-Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
-    Route::get('/',[AdminController::class, 'index'])->name('admin.listings.index');
-    // Route::get('listings/manage', [ListingController::class, 'manage'])->name('admin.listings.manage');
-// Store Listing Data
-// Route::post('listings/create', [ListingController::class, 'store'])->name('admin.listings.store');
+//// ! les questions
+//// ? Ecrire des requêtes permettant de formuler les besoins en informations ci-dessous en utilisant Query Builder :
 
 
-//    GROUP LISTING ROUTE
-         Route::prefix('listings')->group(function() {
-             // Store Listing Data
-             Route::post('/create', [ListingController::class, 'store'])->name('admin.listings.store');
-            // Show Create Form
-            Route::get('/create', [ListingController::class, 'create']);
-            // Manage Listings
-             Route::get('/manage', [ListingController::class, 'manage'])->name('admin.listings.manage');
-            
-            // Single Listing
-             Route::get('/{listing}', [ListingController::class, 'show']);      
-            // Show Edit Form
-             Route::get('/{listing}/edit', [ListingController::class, 'edit']);
-            // Update Listing
-             Route::put('/{listing}', [ListingController::class, 'update']);
-            // Delete Listing
-            Route::delete('{listing}', [ListingController::class, 'destroy'])->name('admin.listings.destroy');
-     });
+//   Q1 liste des fournisseurs
 
-//    GROUP AUTH ROUTE
-
-         Route::prefix('/auth')->group(function() {
-            // Show Register user form
-            Route::get('/register', [AdminController::class, 'create'])->name('admin.auth.register');
-            // Create New User
-            Route::post('/register', [AdminController::class, 'store']);
-            // Delete User
-            Route::delete('{user}', [AdminController::class, 'destroy'])->name('admin.auth.destroy');
-            // MANAGE USERS
-            Route::get('/manage', [UserController::class, 'manage'])->name('admin.auth.manage');
-            // Single User
-            Route::get('/{user}', [UserController::class, 'show']);
-            // Show Edit Form
-            Route::get('/{user}/edit', [UserController::class, 'edit']);
-            // Update user
-            Route::put('/{user}', [UserController::class, 'update']);
-
-         });
-    
-  
-    Route::get('test',function(){
-        return "Test";
-    });
+Route::post('/listeF', [QB::class, 'liste_fournisseurs'])->name('liste_fournisseurs');
+Route::get('/listeF', function () {
+    return view('listeF');
 });
 
+// Q2 La liste des fournisseurs d’Agadir.
+Route::post('/listeFAgadir',[QB::class,'fournisseurs_Agadir'])->name('fournisseurs_Agadir');
+// Q3 Les noms et les villes des fournisseurs.
+Route::post('/listeVF',[QB::class,'fournisseurs_NF'])->name('fournisseurs_NF');
+// Q4 Les désignations et les poids des articles.
+Route::post('/listeDpoids',[QB::class,'désignations_poids'])->name('désignations_poids');
+// Q5 Les numéros et les désignations des articles de couleur verte
+Route::post('/listeNcouleur',[QB::class,'désignations_couleur'])->name('désignations_couleur');
+// Q6 Les désignations des articles de couleur verte ayant un prix d’achat supérieur à 500.
+Route::post('/listeACVP',[QB::class,'prix_supérieur'])->name('prix_supérieur');
 
-// All Listings
-Route::get('/', [ListingController::class, 'index']);
-
-// Single Listing
-Route::get('/listings/{listing}', [ListingController::class, 'show']);
-
-
-// Show Register/Create Form
-Route::get('/register', [UserController::class, 'create'])->middleware('guest');
-
-// Create New User
-Route::post('/auth', [UserController::class, 'store']);
-
-// Show Login Form
-Route::get('/login', [UserController::class, 'login'])->name('login')->middleware('guest');
-
-// Log In User
-Route::post('/auth/authenticate', [UserController::class, 'authenticate']);
-
-// Log User Out
-Route::post('/logout', [UserController::class, 'logout'])->middleware('auth');
+// Q7 Les articles ayant un poids entre 200 et 300.
+Route::post('/listeAEP23',[QB::class,'poids_entre'])->name('poids_entre');
+// Q8	Le nombre d’articles.
+Route::post('/listeCountA',[QB::class,'nombreA'])->name('nombreA');
+// 	La moyenne des prix d’achat.
+Route::post('/listeMoyenneA',[QB::class,'moyennePA'])->name('moyennePA');
 
 
+//   Complément TP Query Builder
+Route::post('/les_articles_de_F',[QB::class,'articleDF'])->name('les_articles_de_F');
 
-
-
-
-// require __DIR__.'/auth.php';
+Route::delete('/articles/{article}', [QB::class,'destroy'])->name('articles.destroy');
+Route::get('/articles/{article}/edit',[QB::class,'edit'])->name('articles.edit');

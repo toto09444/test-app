@@ -21,7 +21,6 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'role', 
     ];
 
     /**
@@ -41,16 +40,5 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'password' => 'hashed',
     ];
-
-    // Relationship With Listings
-    public function listings() {
-        return $this->hasMany(Listing::class, 'user_id');
-    }
-
-    // Relationship With status
-    public function status() {
-        return $this->hasMany(Status::class, 'user_id');
-    }
 }
