@@ -10,6 +10,7 @@
 </head>
 <body>
     <div class="container mt-5">
+        <h1>My app  Imad Najam  </h1>
         <form action="{{ route('addligne.Fournisseur') }}" method="POST">
             @csrf
             <h2>Ajouter un Fournisseur</h2>
