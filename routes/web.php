@@ -47,6 +47,7 @@ Route::post('/listeAEP23',[QB::class,'poids_entre'])->name('poids_entre');
 // Q8	Le nombre d’articles.
 Route::post('/listeCountA',[QB::class,'nombreA'])->name('nombreA');
 // 	La moyenne des prix d’achat.
+
 Route::post('/listeMoyenneA',[QB::class,'moyennePA'])->name('moyennePA');
 
 
