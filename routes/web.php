@@ -43,9 +43,12 @@ Route::post('/listeNcouleur',[QB::class,'désignations_couleur'])->name('désign
 Route::post('/listeACVP',[QB::class,'prix_supérieur'])->name('prix_supérieur');
 
 // Q7 Les articles ayant un poids entre 200 et 300.
+
 Route::post('/listeAEP23',[QB::class,'poids_entre'])->name('poids_entre');
+
 // Q8	Le nombre d’articles.
 Route::post('/listeCountA',[QB::class,'nombreA'])->name('nombreA');
+
 // 	La moyenne des prix d’achat.
 
 Route::post('/listeMoyenneA',[QB::class,'moyennePA'])->name('moyennePA');
