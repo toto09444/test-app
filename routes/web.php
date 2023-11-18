@@ -55,3 +55,4 @@ Route::post('/les_articles_de_F',[QB::class,'articleDF'])->name('les_articles_de
 
 Route::delete('/articles/{article}', [QB::class,'destroy'])->name('articles.destroy');
 Route::get('/articles/{article}/edit',[QB::class,'edit'])->name('articles.edit');
+Route::post('/editL',[QB::class,'editL'])->name('articles.editL');

@@ -72,10 +72,38 @@ class QB extends Controller
 
             return view('listeA', ['four' => $four]);
         }
-
         public function destroy(articles $article)
         {
             $article->delete();
             return response()->json(['success' => true, 'message' => 'Article deleted successfully.'], 200);
         }
+        //
+        public function edit($articleId)
+        {
+            $edi = DB::table('articles')->where('id',$articleId )->get();
+            return view('edit' ,['edis'=>$edi]);
+
+        }
+
+        public function editL(Request $request)
+        {
+            $idArticle = $request->input('ida');
+            $descriptionArticle = $request->input('description');
+            $poidsArticle = $request->input('poids');
+            $couleurArticle = $request->input('couleur');
+            $prix_achatArticle = $request->input('prix_achat');
+
+
+            DB::table('articles')
+                ->where('id', $idArticle)
+                ->update([
+                    'description' => $descriptionArticle,
+                    'poids' => $poidsArticle,
+                    'couleur' => $couleurArticle,
+                    'prix_achat' => $prix_achatArticle,
+
+                ]);
+
+                return response()->json(['success' => true, 'message' => 'Article updated successfully.'], 200);
+           }
 }
