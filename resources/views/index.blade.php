@@ -4,13 +4,113 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Imad Najam</title>
     <!-- Add Bootstrap CSS link -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+
+body{
+    background-color: #F5F7F8;
+}
+    @keyframes bounceIn {
+        0%, 20%, 50%, 80%, 100% {
+            transform: translateY(0);
+        }
+        40% {
+            transform: translateY(-30px);
+        }
+        60% {
+            transform: translateY(-15px);
+        }
+    }
+
+
+    .animated-form {
+        animation: bounceIn 1s ease-in-out;
+    }
+    </style>
 </head>
 <body>
-    <div class="container mt-5">
-        <h1>My app  Imad Najam  </h1>
+    <div class="container mt-5 animated-form">
+        <table class="table table-bordered mx-auto">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Action</th>
+                    <th>Bouton</th>
+                </tr>
+            </thead>
+            <tr>
+                <td>Liste des fournisseurs d'Agadir</td>
+                <td>
+                    <form action="{{ route('fournisseurs_Agadir') }}" method="POST">
+                        <button type="submit" class="btn btn-info ">Q1</button>
+                    </form>
+                </td>
+            </tr>
+            <tr>
+                <td>Noms et villes des fournisseurs</td>
+                <td>
+                    <form action="{{ route('fournisseurs_NF') }}" method="POST">
+                        <button type="submit" class="btn btn-info">Q2</button>
+                    </form>
+                </td>
+            </tr>
+            <tr>
+                <td>Désignations et poids des articles</td>
+                <td>
+                    <form action="{{ route('désignations_poids') }}" method="POST">
+                        <button type="submit" class="btn btn-info">Q3</button>
+                    </form>
+                </td>
+            </tr>
+            <tr>
+                <td>Numéros et désignations des articles de couleur verte</td>
+                <td>
+                    <form action="{{ route('désignations_couleur') }}" method="POST">
+                        <button type="submit" class="btn btn-info">Q4</button>
+                    </form>
+                </td>
+            </tr>
+            <tr>
+                <td>Prix d'achat supérieur à 500</td>
+                <td>
+                    <form action="{{ route('prix_supérieur') }}" method="POST">
+                        <button type="submit" class="btn btn-info">Q5</button>
+                    </form>
+                </td>
+            </tr>
+            <tr>
+                <td>Articles ayant un poids entre 200 et 300</td>
+                <td>
+                    <form action="{{ route('poids_entre') }}" method="POST">
+                        <button type="submit" class="btn btn-info">Q6</button>
+                    </form>
+                </td>
+            </tr>
+            <tr>
+                <td>Le nombre d'articles</td>
+                <td>
+                    <form action="{{ route('nombreA') }}" method="POST">
+                        <button type="submit" class="btn btn-info">Q7</button>
+                    </form>
+                </td>
+            </tr>
+            <tr>
+                <td>Moyenne des prix d'achat</td>
+                <td>
+                    <form action="{{ route('moyennePA') }}" method="POST">
+                        <button type="submit" class="btn btn-info">Q8</button>
+                    </form>
+                </td>
+            </tr>
+        </table>
+
+
+
+
+
+
+        <br>
         <form action="{{ route('addligne.Fournisseur') }}" method="POST">
             @csrf
             <h2>Ajouter un Fournisseur</h2>
@@ -51,86 +151,11 @@
             <button type="submit" class="btn btn-primary">Ajouter</button>
         </form>
         <br><br>
-       <form action="{{route('liste_fournisseurs')}}" method="POST">
-        <button type="submit" class="btn btn-link">Complément TP Query Builder
-        </button>
-    </form>
-    <table class="table-bordered mx-auto"  >
-        <thead class="thead-dark">
-            <tr>
-                <th>Action</th>
-                <th>Bouton</th>
-            </tr>
-        </thead>
-        <tr>
-            <td>Liste des fournisseurs d'Agadir</td>
-            <td>
-                <form action="{{ route('fournisseurs_Agadir') }}" method="POST">
-                    <button type="submit" class="btn btn-info">Q1</button>
-                </form>
-            </td>
-        </tr>
-        <tr>
-            <td>Noms et villes des fournisseurs</td>
-            <td>
-                <form action="{{ route('fournisseurs_NF') }}" method="POST">
-                    <button type="submit" class="btn btn-info">Q2</button>
-                </form>
-            </td>
-        </tr>
-        <tr>
-            <td>Désignations et poids des articles</td>
-            <td>
-                <form action="{{ route('désignations_poids') }}" method="POST">
-                    <button type="submit" class="btn btn-info">Q3</button>
-                </form>
-            </td>
-        </tr>
-        <tr>
-            <td>Numéros et désignations des articles de couleur verte</td>
-            <td>
-                <form action="{{ route('désignations_couleur') }}" method="POST">
-                    <button type="submit" class="btn btn-info">Q4</button>
-                </form>
-            </td>
-        </tr>
-        <tr>
-            <td>Prix d'achat supérieur à 500</td>
-            <td>
-                <form action="{{ route('prix_supérieur') }}" method="POST">
-                    <button type="submit" class="btn btn-info">Q5</button>
-                </form>
-            </td>
-        </tr>
-        <tr>
-            <td>Articles ayant un poids entre 200 et 300</td>
-            <td>
-                <form action="{{ route('poids_entre') }}" method="POST">
-                    <button type="submit" class="btn btn-info">Q6</button>
-                </form>
-            </td>
-        </tr>
-        <tr>
-            <td>Le nombre d'articles</td>
-            <td>
-                <form action="{{ route('nombreA') }}" method="POST">
-                    <button type="submit" class="btn btn-info">Q7</button>
-                </form>
-            </td>
-        </tr>
-        <tr>
-            <td>Moyenne des prix d'achat</td>
-            <td>
-                <form action="{{ route('moyennePA') }}" method="POST">
-                    <button type="submit" class="btn btn-info">Q8</button>
-                </form>
-            </td>
-        </tr>
-    </table>
-
+        <form action="{{route('liste_fournisseurs')}}" method="POST">
+            <button type="submit" class="btn btn-danger">Complément TP Query Builder</button>
+        </form>
 
     </div>
-
 
     <!-- Add Bootstrap JS and Popper.js scripts (order matters) -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
