@@ -16,17 +16,24 @@
             <div class="form-group">
                 <label for="fournisseur">Sélectionnez un fournisseur :</label>
                 <select class="form-control" id="fournisseur" name="fournisseur">
-                    <!-- Replace the static values with a Blade loop to fetch suppliers from the database -->
                     @foreach($four as $fournisseur)
                         <option value="{{ $fournisseur->id }}">{{ $fournisseur->nom }}</option>
                     @endforeach
                 </select>
             </div>
-            <button type="submit" class="btn btn-primary">Afficher les articles</button>
         </form>
     </div>
 
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var selectElement = document.getElementById("fournisseur");
 
+            selectElement.addEventListener("change", function() {
+
+                document.querySelector("form").submit();
+            });
+        });
+    </script>
     <!-- Add Bootstrap JS and Popper.js scripts (order matters) -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
