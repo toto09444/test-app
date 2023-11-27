@@ -26,9 +26,18 @@ class QB extends Controller
             ]);
             return response("l'ajout est effectué avec succès ... ");
             }
-            public function liste_fournisseurs() {
-                $four = DB::table('fournisseur')->get();
+            //////////!
+            public function liste_fournisseurs(Request $request) {
+                if(isset($request)){
+                    $idFr=$request->input('fournisseur');
+                    $four1 = DB::table('articles')->where('id_Fournissours',$idFr)->get();
+                    $four = DB::table('fournisseur')->get();
+                  return view('listeF', ['four' => $four ,'four1'=>$four1]);
+                }else{
+                    $four = DB::table('fournisseur')->get();
                 return view('listeF', ['four' => $four]);
+                }
+
             }
 
         public function fournisseurs_Agadir(){
@@ -40,8 +49,12 @@ class QB extends Controller
             return response($four);
         }
         public function désignations_poids(){
-            $art=DB::table('articles')->get(['description', 'poids']);
-            return response($art);
+
+             // Ex 1
+           // $art=DB::table('articles')->get(['description', 'poids']);
+           // Ex 2
+           return response(articles::get(['description', 'poids']));
+
         }
         public function désignations_couleur(){
             $art=DB::table('articles')->where('couleur','=','Vert')->get(['id', 'poids']);
@@ -72,6 +85,7 @@ class QB extends Controller
 
             return view('listeA', ['four' => $four]);
         }
+
         public function destroy(articles $article)
         {
             $article->delete();
@@ -94,8 +108,7 @@ class QB extends Controller
             $prix_achatArticle = $request->input('prix_achat');
 
 
-            DB::table('articles')
-                ->where('id', $idArticle)
+            articles::where('id', $idArticle)
                 ->update([
                     'description' => $descriptionArticle,
                     'poids' => $poidsArticle,

@@ -31,9 +31,54 @@ body{
     </style>
 </head>
 <body>
-  <a href=" https://imadnajam.github.io/UnderMovies/"> <button type="submit" class="btn btn-danger">My Laravel Project UnderMovies </button></a>
 
     <div class="container mt-5 animated-form">
+        <br>
+        <form action="{{ route('addligne.Fournisseur') }}" method="POST">
+            @csrf
+            <h2>Ajouter un Fournisseur</h2>
+            <div class="form-group">
+                <label for="nom">Nom:</label>
+                <input type="text" class="form-control" id="nom" name="nom" required>
+            </div>
+            <div class="form-group">
+                <label for="ville">Ville:</label>
+                <input type="text" class="form-control" id="ville" name="ville" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Ajouter</button>
+        </form>
+        <br>
+        <form action="{{ route('addligne.Articles') }}" method="POST">
+            @csrf
+            <h2>Ajouter un Article</h2>
+            <div class="form-group">
+                <label for="description">Description:</label>
+                <input type="text" class="form-control" id="description" name="description" required>
+            </div>
+            <div class="form-group">
+                <label for="poids">Poids:</label>
+                <input type="number" class="form-control" id="poids" name="poids" min="20" required>
+            </div>
+            <div class="form-group">
+                <label for="prix_achat">Prix d'achat:</label>
+                <input type="number" class="form-control" id="prix_achat" name="prix_achat" required>
+            </div>
+            <div class="form-group">
+                <label for="id_Fournissours">ID Fournisseur:</label>
+                <input type="number" class="form-control" id="id_Fournissours" name="id_Fournissours" required>
+            </div>
+            <div class="form-group">
+                <label for="couleur">Couleur:</label>
+                <input type="text" class="form-control" id="couleur" name="couleur" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Ajouter</button>
+        </form>
+        <br><br>
+        <form action="{{route('liste_fournisseurs')}}" method="POST">
+            <button type="submit" class="btn btn-danger">Complément TP Query Builder</button>
+        </form><br>
+        <a href=" https://imadnajam.github.io/UnderMovies/"> <button type="submit" class="btn btn-danger">My Laravel Project UnderMovies </button></a>
+<br>
         <table class="table table-bordered mx-auto">
             <thead class="thead-dark">
                 <tr>
@@ -109,53 +154,6 @@ body{
 
 
 
-
-
-
-        <br>
-        <form action="{{ route('addligne.Fournisseur') }}" method="POST">
-            @csrf
-            <h2>Ajouter un Fournisseur</h2>
-            <div class="form-group">
-                <label for="nom">Nom:</label>
-                <input type="text" class="form-control" id="nom" name="nom" required>
-            </div>
-            <div class="form-group">
-                <label for="ville">Ville:</label>
-                <input type="text" class="form-control" id="ville" name="ville" required>
-            </div>
-            <button type="submit" class="btn btn-primary">Ajouter</button>
-        </form>
-        <br>
-        <form action="{{ route('addligne.Articles') }}" method="POST">
-            @csrf
-            <h2>Ajouter un Article</h2>
-            <div class="form-group">
-                <label for="description">Description:</label>
-                <input type="text" class="form-control" id="description" name="description" required>
-            </div>
-            <div class="form-group">
-                <label for="poids">Poids:</label>
-                <input type="number" class="form-control" id="poids" name="poids" min="20" required>
-            </div>
-            <div class="form-group">
-                <label for="prix_achat">Prix d'achat:</label>
-                <input type="number" class="form-control" id="prix_achat" name="prix_achat" required>
-            </div>
-            <div class="form-group">
-                <label for="id_Fournissours">ID Fournisseur:</label>
-                <input type="number" class="form-control" id="id_Fournissours" name="id_Fournissours" required>
-            </div>
-            <div class="form-group">
-                <label for="couleur">Couleur:</label>
-                <input type="text" class="form-control" id="couleur" name="couleur" required>
-            </div>
-            <button type="submit" class="btn btn-primary">Ajouter</button>
-        </form>
-        <br><br>
-        <form action="{{route('liste_fournisseurs')}}" method="POST">
-            <button type="submit" class="btn btn-danger">Complément TP Query Builder</button>
-        </form>
 
     </div>
 
